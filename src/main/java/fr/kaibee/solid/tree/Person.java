@@ -1,4 +1,9 @@
 package fr.kaibee.solid.tree;
 
-public class Person {
+public interface Person {
+    int getAge();
+    int getDept();
+    boolean hasCar();
+    boolean hasMotorbike();
+
 }
