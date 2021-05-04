@@ -5,5 +5,4 @@ public interface Person {
     int getDept();
     boolean hasCar();
     boolean hasMotorbike();
-
 }
