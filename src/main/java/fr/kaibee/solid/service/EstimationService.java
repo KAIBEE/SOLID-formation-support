@@ -19,15 +19,19 @@ public class EstimationService {
     }
 
     public int getCarInsuranceCostEstimation(Long familyId) {
+        Map<Month, Integer> computedDrivenDistancesOfLastYear = computeDistanceOfLastYear(familyId);
 
+        return computeEstimationCostFrom(computedDrivenDistancesOfLastYear);
+    }
+
+    private Map<Month, Integer> computeDistanceOfLastYear(Long familyId) {
         Map<Month, Integer> drivenDistancesOfLastYear = distanceRepository.getDistancesOfLastYears(familyId);
         Map<Month, Integer> estimatedDrivenDistancesOfLastYear = drivenDistancesOfLastYear;
 
         if (hasHoles(drivenDistancesOfLastYear)) { // Should it be here ??
             estimatedDrivenDistancesOfLastYear = completeDrivenDistanceHoleWithSimilarHome(familyId, drivenDistancesOfLastYear);
         }
-
-        return computeEstimationCostFrom(estimatedDrivenDistancesOfLastYear); // Does it belong to that class ?
+        return estimatedDrivenDistancesOfLastYear;
     }
 
     private Map<Month, Integer> completeDrivenDistanceHoleWithSimilarHome(Long familyId, Map<Month, Integer> distancesOfLastYears) {
