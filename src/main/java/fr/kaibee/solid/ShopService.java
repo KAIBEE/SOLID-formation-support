@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class ShopService {
 
-    private Map<Item, Integer> itemStock = new HashMap<>(); // For example only. Not threadsafe
+    private final Map<Item, Integer> itemStock = new HashMap<>(); // For example only. Not threadsafe
 
     /**
      * Sells an item if in stock. Decrement stock for this item if present and return price of the sold item.

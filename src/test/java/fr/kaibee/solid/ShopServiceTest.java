@@ -31,6 +31,8 @@ public class ShopServiceTest {
     }
 
     private ShopService getShopService() {
-        return new ShopService();
+//        return new ShopService();
+//        return new BeginnerShopService();
+        return new ModernShopService();
     }
 }
