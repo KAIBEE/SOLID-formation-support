@@ -1,6 +1,6 @@
 package fr.kaibee.solid.tree;
 
-public interface NodeFactory {
+public interface AbstractNodeFactory {
     // Just command result
     // Not interested in children and guard
     Node leaf(CommandFactory cmdFactory);

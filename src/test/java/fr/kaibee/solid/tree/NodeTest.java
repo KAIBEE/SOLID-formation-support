@@ -12,7 +12,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class NodeTest {
 
     public static final String NO_RESULT = "No result";
-    private NodeFactory factory;
+    private AbstractNodeFactory factory;
 
     private Supplier<String> resultProvider;
 
@@ -78,7 +78,7 @@ public class NodeTest {
         return factory.middleNode(p -> !p.hasCar() && p.hasMotorbike(), motorbikeLeaf);
     }
 
-    private NodeFactory getFactory() {
+    private AbstractNodeFactory getFactory() {
         return new DefaultNodeFactory();
     }
 
