@@ -9,9 +9,16 @@ import static java.time.temporal.ChronoField.MONTH_OF_YEAR;
 import static java.time.temporal.ChronoField.YEAR;
 
 public class EnergyComputer {
-    private EnergyRepository energyRepository = new EnergyRepositoryProxy();
-    private HolePlugger holePlugger = new HolePlugger();
-    private Clock clock = Clock.systemUTC();
+
+    private EnergyRepository energyRepository;
+    private HolePlugger holePlugger;
+    private Clock clock;
+
+    public EnergyComputer(EnergyRepository energyRepository, HolePlugger holePlugger, Clock clock) {
+        this.energyRepository = energyRepository;
+        this.holePlugger = holePlugger;
+        this.clock = clock;
+    }
 
     public long computeEnergyConsumptionOfCurrentMonth(long idClient, EnergyType energyType) {
         Instant now = clock.instant();

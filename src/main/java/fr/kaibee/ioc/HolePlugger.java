@@ -4,8 +4,13 @@ import java.time.YearMonth;
 import java.util.List;
 
 public class HolePlugger {
-    private ClientRepository clientRepository = new ClientRepository();
-    private EnergyRepository energyRepository = new EnergyRepositoryProxy();
+    private ClientRepository clientRepository;
+    private EnergyRepository energyRepository;
+
+    public HolePlugger(ClientRepository clientRepository, EnergyRepositoryProxy energyRepository) {
+        this.clientRepository = clientRepository;
+        this.energyRepository = energyRepository;
+    }
 
     public List<Consumption> plugHoles(List<Consumption> consumptions, long idClient, EnergyType energyType, YearMonth period) {
         if (hasHoles(consumptions)) {
